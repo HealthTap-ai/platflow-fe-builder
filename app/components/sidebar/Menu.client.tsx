@@ -203,6 +203,13 @@ export const Menu = () => {
               <span className="inline-block i-lucide:message-square h-4 w-4" />
               <span className="text-sm font-medium">Start new chat</span>
             </a>
+            <a
+              href="/platflow-builder"
+              className="flex gap-2 items-center bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-500/20 rounded-lg px-4 py-2 transition-colors"
+            >
+              <span className="inline-block i-lucide:hammer h-4 w-4" />
+              <span className="text-sm font-medium">Builder Chat</span>
+            </a>
             <div className="relative w-full">
               <div className="absolute left-3 top-1/2 -translate-y-1/2">
                 <span className="i-lucide:search h-4 w-4 text-gray-400 dark:text-gray-500" />
