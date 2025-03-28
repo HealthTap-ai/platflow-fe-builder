@@ -2,7 +2,9 @@
 # Provides simple commands for running the application with Docker
 
 ACR_NAME := platflowfrontendgen
-DOCKER_NAME := bolt-ai
+DOCKER_NAME := platflowfrontendgen
+APP_NAME := platflow-frontend-gen
+RESOURCE_GROUP := tap-ai-workflows-rg
 GIT_COMMIT := $(shell git rev-parse --short HEAD)
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 
@@ -34,7 +36,10 @@ one_time_setup_azure_container_registry:
 # Build the Docker image
 docker-build:
 	@echo "Building Docker image..."
-	docker build . --target bolt-ai-development
+	DOCKER_BUILDKIT=1 docker buildx build --platform linux/amd64 \
+		--target platflow-frontend-gen-development \
+		--build-arg COMMIT_HASH=${GIT_COMMIT} \
+		-t ${DOCKER_TAG} .
 
 # Run the bolt.diy container
 docker-run:
@@ -52,7 +57,6 @@ azure-login:
 # Push Docker image to Azure Container Registry
 azure-push: docker-build azure-login
 	@echo "Pushing Docker image to Azure Container Registry..."
-	docker tag bolt-ai-production $(DOCKER_TAG)
 	docker push $(DOCKER_TAG)
 
 # Deploy container to Azure App Service
