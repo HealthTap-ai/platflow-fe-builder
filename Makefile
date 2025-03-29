@@ -44,7 +44,7 @@ docker-build:
 # Run the bolt.diy container
 docker-run:
 	@echo "Starting bolt.diy container..."
-	docker compose --profile development up
+	docker run -p 80:80 ${DOCKER_TAG}
 
 # Build and then run the container
 docker-start: docker-build docker-run 
