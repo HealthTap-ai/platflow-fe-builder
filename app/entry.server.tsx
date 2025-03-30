@@ -5,6 +5,7 @@ import { renderToReadableStream } from 'react-dom/server';
 import { renderHeadToString } from 'remix-island';
 import { Head } from './root';
 import { themeStore } from '~/lib/stores/theme';
+import { initializeApiKeysFromKeyVault } from './lib/.server/llm/key-vault-helper';
 
 export default async function handleRequest(
   request: Request,
@@ -14,6 +15,7 @@ export default async function handleRequest(
   _loadContext: AppLoadContext,
 ) {
   // await initializeModelList({});
+  await initializeApiKeysFromKeyVault('https://healthtap-vault-staging.vault.azure.net/');
 
   const readable = await renderToReadableStream(<RemixServer context={remixContext} url={request.url} />, {
     signal: request.signal,

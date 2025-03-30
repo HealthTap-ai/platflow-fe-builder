@@ -48,6 +48,8 @@
     "node": ">=18.18.0"
   },
   "dependencies": {
+    "@azure/identity": "^2.1.0",
+    "@azure/keyvault-secrets": "^4.5.0",
     "@ai-sdk/amazon-bedrock": "1.0.6",
     "@ai-sdk/anthropic": "^0.0.39",
     "@ai-sdk/cohere": "^1.0.3",

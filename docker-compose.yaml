@@ -70,7 +70,7 @@ services:
       - /app/node_modules
     ports:
       - '80:80'
-    command: pnpm run dev --host 0.0.0.0
+    command: pnpm run dev --host --port=80
     profiles: ['development', 'default']
 
   app-prebuild:
